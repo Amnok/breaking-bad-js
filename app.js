@@ -120,7 +120,9 @@
 const element = document.querySelector('.container-grid');
 const inputSearch = document.querySelector('.inputer');
 const headerName = document.querySelector('.headerName');
-headerName.innerHTML = '🇴 🇺 🇷 👇 🇸 🇹 🇴 🇷 🇪'
+const profileIcon = document.querySelector('.profileIcon');
+headerName.innerHTML = '🇴 🇺 🇷 👇 🇸 🇹 🇴 🇷 🇪';
+profileIcon.innerHTML = '😇';
 
 function mainRenderer(data = []) {
     console.log("data", data);
