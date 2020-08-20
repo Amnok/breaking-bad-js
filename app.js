@@ -119,9 +119,17 @@
 
 const element = document.querySelector('.container-grid');
 const inputSearch = document.querySelector('.inputer');
+const headerName = document.querySelector('.headerName');
+headerName.innerHTML = '🇴 🇺 🇷 👇 🇸 🇹 🇴 🇷 🇪'
 
 function mainRenderer(data = []) {
+    console.log("data", data);
     const element = document.querySelector('.container-grid');
+    if(data && data.length <= 0) {
+        let noDataDiv = document.createElement("h2"); // parent card
+        noDataDiv.innerHTML = 'No Data Available 😃';
+        element.appendChild(noDataDiv);
+    }
     for (let i=0 ; i<data.length; i++) {
         let card = document.createElement("div"); // parent card
         let image = document.createElement("img"); // for storing image
@@ -132,7 +140,7 @@ function mainRenderer(data = []) {
         image.className = 'image';
     
         title.innerHTML = data[i].title;
-        price.innerHTML = data[i].price;
+        price.innerHTML = data[i].price + '💲';
     
         content.className = 'content';
         content.appendChild(title);
