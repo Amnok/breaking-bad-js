@@ -121,6 +121,23 @@ const element = document.querySelector('.container-grid');
 const inputSearch = document.querySelector('.inputer');
 const headerName = document.querySelector('.headerName');
 const profileIcon = document.querySelector('.profileIcon');
+const dropdownBtn = document.querySelector('.dropdown');
+const hamburger = document.querySelector('.hamburger');
+
+
+// hamburger event
+
+hamburger.addEventListener('click', () => {
+    document.querySelector('.sidebar').setAttribute("style", "width: 350px")
+})
+
+//dropdown event
+profileIcon.addEventListener('click', () => {
+    dropdownBtn.setAttribute("style", "display: flex;");
+})
+
+
+profileIcon.className = 'profileIcon';
 headerName.innerHTML = '🇴 🇺 🇷 👇 🇸 🇹 🇴 🇷 🇪';
 profileIcon.innerHTML = '😇';
 

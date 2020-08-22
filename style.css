@@ -18,6 +18,7 @@ button:hover {
 button:active {
     background-color: darkgray;
     color: brown
+    border: none;
 }
 .options {
     display: flex;
@@ -26,8 +27,8 @@ button:active {
     margin-bottom: 20px;
 }
 input {
-    width: 350px;
-    height: 30px;
+    width: 400px;
+    height: 40px;
     border-radius: 5px;
 }
 .search {
@@ -70,4 +71,37 @@ input {
     margin-bottom: 20px;
     box-shadow: 0 0 4px;
     padding: 0px 10px;
+}
+.profileIcon {
+    cursor: pointer;
+}
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+.hamburger{
+   cursor: pointer; 
+}
+
+.sidebar {
+    height: 100%;
+    width: 250;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 0 4px;
+}
+.sidebar ul {
+    background-color: transparent;
+}
+.sidebar ul li{
+padding: 10px;
+}
+.sidebar ul li button {
+    width: 150px;
+    border: none;
 }
