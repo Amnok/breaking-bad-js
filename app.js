@@ -1,4 +1,4 @@
- const data = [
+const data = [
     {
         "id": 1,
         "title": "cake 1",
@@ -123,18 +123,7 @@ const headerName = document.querySelector('.headerName');
 const profileIcon = document.querySelector('.profileIcon');
 const dropdownBtn = document.querySelector('.dropdown');
 const hamburger = document.querySelector('.hamburger');
-
-
-// hamburger event
-
-hamburger.addEventListener('click', () => {
-    document.querySelector('.sidebar').setAttribute("style", "width: 350px")
-})
-
-//dropdown event
-profileIcon.addEventListener('click', () => {
-    dropdownBtn.setAttribute("style", "display: flex;");
-})
+const containerButton = document.querySelector('.sidenav-container');
 
 
 profileIcon.className = 'profileIcon';
@@ -144,12 +133,12 @@ profileIcon.innerHTML = '😇';
 function mainRenderer(data = []) {
     console.log("data", data);
     const element = document.querySelector('.container-grid');
-    if(data && data.length <= 0) {
+    if (data && data.length <= 0) {
         let noDataDiv = document.createElement("h2"); // parent card
         noDataDiv.innerHTML = 'No Data Available 😃';
         element.appendChild(noDataDiv);
     }
-    for (let i=0 ; i<data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         let card = document.createElement("div"); // parent card
         let image = document.createElement("img"); // for storing image
         let content = document.createElement("div"); // for content store (name and price)
@@ -157,62 +146,85 @@ function mainRenderer(data = []) {
         let price = document.createElement("h3") // for price store
         image.src = data[i].src;
         image.className = 'image';
-    
+
         title.innerHTML = data[i].title;
         price.innerHTML = data[i].price + '💲';
-    
+
         content.className = 'content';
         content.appendChild(title);
         content.appendChild(price);
-    
-        card.className = 'card'; 
+
+        card.className = 'card';
         card.appendChild(image);
         card.appendChild(content);
-    
+
         element.appendChild(card);
         // element.innerHTML += '<span>' + data[i].title + '</span>';
         console.log(data[i]);
-      }    
+    }
 }
 
+// sidenav-container event
+containerButton.addEventListener('click', (e) => {
+    document.querySelector('.sidebar').setAttribute("style", "width: 0px");
+    document.querySelector('.sidenav-container').setAttribute("style", "background-color: rgba(0,0,0,0)");
+})
 
-  //all button
-  const allButton = document.querySelector('.all');
-  allButton.addEventListener('click', () => {
+
+// hamburger event
+hamburger.addEventListener('click', () => {
+    document.querySelector('.sidebar').setAttribute("style", "width: 200px");
+    document.querySelector('.sidenav-container').setAttribute("style", "width: 100vw");
+})
+
+//dropdown event
+profileIcon.addEventListener('click', () => {
+    dropdownBtn.setAttribute("style", "display: flex;");
+})
+
+//all button
+const allButton = document.querySelector('.all');
+allButton.addEventListener('click', (e) => {
     element.innerHTML = '';
     mainRenderer(data);
-  });
+    e.stopPropagation();
+});
 
 //cakes button
-  const cakesButton = document.querySelector('.cakes');
-  cakesButton.addEventListener('click', () => {
+const cakesButton = document.querySelector('.cakes');
+cakesButton.addEventListener('click', (e) => {
+    console.log("inside cakes");
     element.innerHTML = '';
     const cakesData = data.filter(val => val.type === 'CAKES');
     mainRenderer(cakesData);
-  });
+    e.stopPropagation();
+});
 
-  // cupcakes button
-  const cupcakesButton = document.querySelector('.cupcakes');
-  cupcakesButton.addEventListener('click', () => {
+// cupcakes button
+const cupcakesButton = document.querySelector('.cupcakes');
+cupcakesButton.addEventListener('click', (e) => {
     element.innerHTML = '';
     const cakesData = data.filter(val => val.type === 'CUPCAKES');
     mainRenderer(cakesData);
-  });
+    e.stopPropagation();
+});
 
 // sweets button
-  const sweetsButton = document.querySelector('.sweets');
-  sweetsButton.addEventListener('click', () => {
+const sweetsButton = document.querySelector('.sweets');
+sweetsButton.addEventListener('click', (e) => {
     element.innerHTML = '';
     const cakesData = data.filter(val => val.type === 'SWEETS');
     mainRenderer(cakesData);
-  });
+    e.stopPropagation();
+});
 
 // doughnuts button 
 const doughnutsButton = document.querySelector('.doughnuts');
-doughnutsButton.addEventListener('click', () => {
+doughnutsButton.addEventListener('click', (e) => {
     element.innerHTML = '';
     const cakesData = data.filter(val => val.type === 'DOUGHNUTS');
     mainRenderer(cakesData);
+    e.stopPropagation();
 });
 
 inputSearch.addEventListener('input', (e) => {
@@ -220,5 +232,6 @@ inputSearch.addEventListener('input', (e) => {
     element.innerHTML = '';
     const filteredData = data.filter(val => val.title.includes(e.target.value));
     mainRenderer(filteredData);
-} )
+    e.stopPropagation();
+})
 mainRenderer(data);

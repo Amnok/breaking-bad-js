@@ -85,9 +85,9 @@ input {
 
 .sidebar {
     height: 100%;
-    width: 250;
+    width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     left: 0;
     overflow-x: hidden;
@@ -99,9 +99,22 @@ input {
     background-color: transparent;
 }
 .sidebar ul li{
-padding: 10px;
+    padding: 20px;
+    width: 210px;
+    cursor: pointer;
 }
-.sidebar ul li button {
-    width: 150px;
-    border: none;
+.sidebar ul li:hover {
+    background-color: rgb(218, 219, 213);
+}
+.sidebar ul li:active {
+    background-color: rgb(218, 219, 213);
+}
+.sidenav-container{
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
 }
